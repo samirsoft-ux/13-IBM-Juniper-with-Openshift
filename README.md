@@ -107,13 +107,12 @@ Cuando se le pida la contraseña ingrese la contraseña para el usuario *admin* 
 ## Configuración VPN site to site Juniper
 
 ### Creación de nuevos segmentos de red
-Luego de crear la VPN for VPC siguiendo los pasos explicados en el repositorio debe crear los nuevos segmentos de red en el global adress book en Juniper para la VPN y la VLAN creados anteriormente. Para esto una vez iniciada sesión en Juniper siga la ruta ```Security Policies and Objects > Global Addresses  > Icono de lápiz > +``` para agregar una nueva dirección global. Esto abrirá un menú de configuración, aquí ingrese la siguiente información:
+Se debe crear los nuevos segmentos de red en el global adress book en Juniper para la VPN y la VLAN del cluster. Para esto una vez iniciada sesión en Juniper siga la ruta ```Security Policies and Objects > Global Addresses  > Icono de lápiz > +``` para agregar una nueva dirección global. Esto abrirá un menú de configuración, aquí ingrese la siguiente información:
 * ```Address Name```: Ingrese un nombre distintivo para la dirección
 * ```Value```: Ingrese el segmento de red privado del servicio creado anteriormente.
 * De click en ```Ok```
 * De click en ```Commit```> ```Commit configuration```
 
-Luego de esto repita el proceso tanto para la VPN como para la VLAN
 
   <p align="center">
    <img src=https://github.com/samirsoft-ux/Juniper-with-Openshift/blob/main/Imagenes/Segmentos.gif>
@@ -148,15 +147,15 @@ Siga la ruta ```Network > Connectivity > Interfaces``` y tenga en cuenta los sig
 para esto siga la ruta ```VPN > create VPN > site to site```. Esto abrirá una pestaña de configuración, aquí ingrese la siguiente información.
 * ```Name```: Ingrese un nombre para la conexión.
 * De click sobre el icono de ```Remote Gateway```.Esto abrira una nueva pestaña de configuración, aquí ingrese la siguiente información:
-  * ```External IP address```: ingrese la IP de Gateway de la VPN for VPC.
-  * ```Protected networks```: Seleccione el segmento de red privado de la VPN que se creo anteriormente
+  * ```External IP address```: ingrese la IP del Gateway del ambiente on-premise
+  * ```Protected networks```: Seleccione el segmento de red privado del ambiente on-premise
   *  De click en ```Ok```
 *  De click sobre el icono de ```Local Gateway```.Esto abrira una nueva pestaña de configuración, aquí ingrese la siguiente información:
   * ```Tunnel Interface```: Seleccione la interfaz creada anteriormente.
-  * ```Pre-shared key```: Ingrese la misma contraseña que utilizo en la creación de la conexión VPN para VPC
+  * ```Pre-shared key```: Ingrese la misma contraseña que se ha definido en la plantilla Formulario VPN
   * ```Protected networks```: De click en ```+```y seleccione la zona privada de la VLAN creada anteriormente
   * De click en ```Ok```
-* ```De click en IKE and IPsec Settings``` para configurar las políticas de acuerdo a las establecidas en la creación de la VPN for VPC que se encuentran en el siguiente repositorio.
+* ```De click en IKE and IPsec Settings``` para configurar las políticas de acuerdo a las establecidas en la plantilla Formulario VPN
 * De click en ```Save```
 * De click en ```Commit```> ```Commit configuration```
 
