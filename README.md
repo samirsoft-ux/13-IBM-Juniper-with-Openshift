@@ -4,7 +4,7 @@ IBM Cloud Juniper vSRX le permite enrutar selectivamente el tráfico de red púb
 
 En este repositorio se presentan los pasos a seguir para establecer una conexion entre un cluster de Openshift en infraestructura clásica y 1 servidor on-premise.
 
-## Arquitectura 📑
+## Arquitectura
 <p align="center">
 <img src=https://github.com/samirsoft-ux/Juniper-with-Openshift/blob/main/Imagenes/architecture.png>
 </p>
@@ -13,8 +13,6 @@ En este repositorio se presentan los pasos a seguir para establecer una conexion
 1. [Crear servicio Gateway Appliance](#crear-servicio-gateway-appliance)
 2. [Ingresar a Juniper](#ingresar-a-juniper)
 3. [Configuración VPN site to site Juniper](#configuración-vpn-site-to-site-juniper)
-4. [Habilitación y Políticas de Seguridad](#habilitación-y-pol%C3%ADticas-de-seguridad)
-5. [Habilitación de trafico a internet publico](#habilitación-de-trafico-a-internet-publico)
 
 ## Pre-Requisitos :pencil:
 * Contar con una cuenta en <a href="https://cloud.ibm.com/"> IBM Cloud </a>.
@@ -107,7 +105,6 @@ Cuando se le pida la contraseña ingrese la contraseña para el usuario *admin* 
  
  
 ## Configuración VPN site to site Juniper
-Antes de iniciar con la configuración es necesario crear una VPN en VPC, para esto tenga en cuenta el siguiente <a href="https://github.com/emeloibmco/VPC-Conexion-VPN"> repositorio </a>
 
 ### Creación de nuevos segmentos de red
 Luego de crear la VPN for VPC siguiendo los pasos explicados en el repositorio debe crear los nuevos segmentos de red en el global adress book en Juniper para la VPN y la VLAN creados anteriormente. Para esto una vez iniciada sesión en Juniper siga la ruta ```Security Policies and Objects > Global Addresses  > Icono de lápiz > +``` para agregar una nueva dirección global. Esto abrirá un menú de configuración, aquí ingrese la siguiente información:
