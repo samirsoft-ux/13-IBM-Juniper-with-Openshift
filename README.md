@@ -179,7 +179,7 @@ Se deben habilitar los puertos 500 y 4500 para tener una conexión satisfactoria
    </p>
    
  
- Una vez terminada la configuracion debera obtener el siguiente resultado y tenga en cuenta el siguiente <a href="https://github.com/emeloibmco/PowerVS-Conectividad"> repositorio </a> para realizar una conexion entre PowerVS y el Firewall Juniper para proporcionar una VPN de sitio a sitio, permitiendo la comunicación de ubicación local on-premise a PowerVS, mediante un túnel GRE entre la ubicación Juniper y PowerVS.
+ Una vez terminada la configuracion debera obtener el siguiente resultado.
   <p align="center">
    <img src=https://github.com/samirsoft-ux/Juniper-with-Openshift/blob/main/Imagenes/Resultado.png>
    </p>
