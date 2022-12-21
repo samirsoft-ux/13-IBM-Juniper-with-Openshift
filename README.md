@@ -6,9 +6,8 @@ En este repositorio se presentan los pasos a seguir para establecer una conexion
 
 ## Arquitectura 📑
 <p align="center">
-<img src=https://github.com/emeloibmco/Gateway-Appliance-Juniper-vSRX-version-20.4/blob/main/Imagenes/Crear.gif>
+<img src=https://github.com/samirsoft-ux/Juniper-with-Openshift/blob/main/Imagenes/architecture.png>
 </p>
-architecture.png
 
 ## Tabla de contenido 📑
 1. [Crear servicio Gateway Appliance](#crear-servicio-gateway-appliance)
@@ -63,7 +62,7 @@ Para desplegar un dispositivo de pasarela ```Gateway Appliance``` realice lo sig
    * ```Location```: El despliegue del gateway appliance debe de ser en la misma región que del cluster.
 
    <p align="center">
-   <img src=https://github.com/emeloibmco/Gateway-Appliance-Juniper-vSRX-version-20.4/blob/main/Imagenes/Crear.gif>
+   <img src=https://github.com/samirsoft-ux/Juniper-with-Openshift/blob/main/Imagenes/Crear.gif>
    </p>
   
 <br />
@@ -96,7 +95,7 @@ Luego de desplegar el ```Gateway Appliance``` siga los pasos que se indican a co
 4. De click en el botón ```Log In``` para iniciar sesión en Juniper.
 
   <p align="center">
-   <img src=https://github.com/emeloibmco/Gateway-Appliance-Juniper-vSRX-version-20.4/blob/main/Imagenes/Juniper.png>
+   <img src=https://github.com/samirsoft-ux/Juniper-with-Openshift/blob/main/Imagenes/Juniper.png>
    </p>
  
 ### Ingresar por linea de comando SHH
@@ -120,7 +119,7 @@ Luego de crear la VPN for VPC siguiendo los pasos explicados en el repositorio d
 Luego de esto repita el proceso tanto para la VPN como para la VLAN
 
   <p align="center">
-   <img src=https://github.com/emeloibmco/Gateway-Appliance-Juniper-vSRX-version-20.4/blob/main/Imagenes/Segmentos.gif>
+   <img src=https://github.com/samirsoft-ux/Juniper-with-Openshift/blob/main/Imagenes/Segmentos.gif>
    </p>
 
 ### Creación de una dirección de Zona 
@@ -131,7 +130,7 @@ Siga la ruta ```Security Policies and Objects > Zones/Screens > +```para agregar
 * De click en ```Commit```> ```Commit configuration```
 
   <p align="center">
-   <img src=https://github.com/emeloibmco/Gateway-Appliance-Juniper-vSRX-version-20.4/blob/main/Imagenes/Zona.gif>
+   <img src=https://github.com/samirsoft-ux/Juniper-with-Openshift/blob/main/Imagenes/Zona.gif>
    </p>
    
 ### Creación de una nueva interface
@@ -145,7 +144,7 @@ Siga la ruta ```Network > Connectivity > Interfaces``` y tenga en cuenta los sig
 * De click en ```Commit```> ```Commit configuration```
 
   <p align="center">
-   <img src=https://github.com/emeloibmco/Gateway-Appliance-Juniper-vSRX-version-20.4/blob/main/Imagenes/Interface.gif>
+   <img src=https://github.com/samirsoft-ux/Juniper-with-Openshift/blob/main/Imagenes/Interface.gif>
    </p>
 
 ### Creación de VPN site to site
@@ -165,7 +164,7 @@ para esto siga la ruta ```VPN > create VPN > site to site```. Esto abrirá una p
 * De click en ```Commit```> ```Commit configuration```
 
   <p align="center">
-   <img src=https://github.com/emeloibmco/Gateway-Appliance-Juniper-vSRX-version-20.4/blob/main/Imagenes/STS.gif>
+   <img src=https://github.com/samirsoft-ux/Juniper-with-Openshift/blob/main/Imagenes/STS.gif>
    </p>
  
 ## Habilitación de puertos de conexión
@@ -180,13 +179,13 @@ Se deben habilitar los puertos 500 y 4500 para tener una conexión satisfactoria
  * De click en ```Commit```> ```Commit configuration```
 
   <p align="center">
-   <img src=https://github.com/emeloibmco/Gateway-Appliance-Juniper-vSRX-version-20.4/blob/main/Imagenes/Puertos.gif>
+   <img src=https://github.com/samirsoft-ux/Juniper-with-Openshift/blob/main/Imagenes/Puertos.gif>
    </p>
    
  
  Una vez terminada la configuracion debera obtener el siguiente resultado y tenga en cuenta el siguiente <a href="https://github.com/emeloibmco/PowerVS-Conectividad"> repositorio </a> para realizar una conexion entre PowerVS y el Firewall Juniper para proporcionar una VPN de sitio a sitio, permitiendo la comunicación de ubicación local on-premise a PowerVS, mediante un túnel GRE entre la ubicación Juniper y PowerVS.
   <p align="center">
-   <img src=https://github.com/emeloibmco/Gateway-Appliance-Juniper-vSRX-version-20.4/blob/main/Imagenes/Resultado.png>
+   <img src=https://github.com/samirsoft-ux/Juniper-with-Openshift/blob/main/Imagenes/Resultado.png>
    </p>
 
 <br />
