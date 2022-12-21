@@ -218,7 +218,7 @@ Para poder definir esta comunicación se va a hacer uso de los comandos mostrado
 * ```set security policies from-zone SL-PUBLIC to-zone SL-PRIVATE policy Allow_public-in then permit```
 * ```commit```
 
-### Enrutas las ip's del ambiente on-premise
+### Enrutar las ip's del ambiente on-premise
 * ```configure```
 * ```set routing-options static route <primera ip del ambiente on-premise> next-hop st0.0```
 * ```set routing-options static route <segunda ip del ambiente on-premise> next-hop st0.0```
@@ -233,4 +233,4 @@ Para poder definir esta comunicación se va a hacer uso de los comandos mostrado
 
 
 ## Autores :black_nib:
-Italo Silva Publi Cloud Perú.
+Italo Silva Public Cloud Perú.
