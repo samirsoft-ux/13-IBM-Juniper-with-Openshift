@@ -1,8 +1,14 @@
 # Configuración de Juniper
 
-IBM Cloud Juniper vSRX le permite enrutar selectivamente el tráfico de red pública y privada, a través de un firewall de nivel empresarial que funciona con características de software de JunOS, como stack de enrutamiento completo, tráfico compartido, enrutamiento basado en políticas y VPN. En este repositorio se encuentran los pasos necesarios para crear y configurar una conexion entre una VPN for VPC y un Power Virtual Server.
+IBM Cloud Juniper vSRX le permite enrutar selectivamente el tráfico de red pública y privada, a través de un firewall de nivel empresarial que funciona con características de software de JunOS, como stack de enrutamiento completo, tráfico compartido, enrutamiento basado en políticas y VPN.
 
-En este repositorio se presentan los pasos a seguir para establecer una conexion entre un cluster de Openshift en infraestructura clásica y 3 servidores on-premise.
+En este repositorio se presentan los pasos a seguir para establecer una conexion entre un cluster de Openshift en infraestructura clásica y 1 servidor on-premise.
+
+## Arquitectura 📑
+<p align="center">
+<img src=https://github.com/emeloibmco/Gateway-Appliance-Juniper-vSRX-version-20.4/blob/main/Imagenes/Crear.gif>
+</p>
+architecture.png
 
 ## Tabla de contenido 📑
 1. [Crear servicio Gateway Appliance](#crear-servicio-gateway-appliance)
@@ -162,15 +168,9 @@ para esto siga la ruta ```VPN > create VPN > site to site```. Esto abrirá una p
    <img src=https://github.com/emeloibmco/Gateway-Appliance-Juniper-vSRX-version-20.4/blob/main/Imagenes/STS.gif>
    </p>
  
-## Habilitación y Políticas de Seguridad
-
-Al terminar la configuración y creación de la conexión VPN site to site ingrese a la VPN creada anteriormente siguiendo la ruta ```Menú de navegación > VPC Infrastructure > VPNs > Seleccione el nombre de su VPN > VPN Connections```y habilite la conexión.
-
-  <p align="center">
-   <img src=https://github.com/emeloibmco/Gateway-Appliance-Juniper-vSRX-version-20.4/blob/main/Imagenes/Habilitacion.gif>
-   </p>
+## Habilitación de puertos de conexión
    
-Luego de esto se deben habilitar los puertos 500 y 4500 para tener una conexión satisfactoria, para esto tenga en cuenta los siguientes pasos:
+Se deben habilitar los puertos 500 y 4500 para tener una conexión satisfactoria, para esto tenga en cuenta los siguientes pasos:
  * Siga la ruta ```Network > Firewall Filters > IPV4``` 
  * En la sección ```Add New IPV4 Filter```ingrese la siguiente información:
  * ```Filter name```: PROTECT-IN
@@ -191,41 +191,9 @@ Luego de esto se deben habilitar los puertos 500 y 4500 para tener una conexión
 
 <br />
 
-
-## Habilitación de trafico a internet publico
-
-Para permitir el acceso de la maquina a la red publica tal y como se muestra en el grafico es necesario realizar la siguiente configuración en la línea de comandos
- <p align="center">
-   <img src=https://github.com/emeloibmco/Gateway-Appliance-Juniper-vSRX-version-20.4/blob/main/Imagenes/Habilitacion.png>
-   </p>
-
-Primero se realiza la configuración de Nat Source desde la zona SL-PRIVATE to SL-PUBLIC y se definen las políticas de zona para el trafico de información con los siguientes comandos
-
-```
-set security nat source rule-set rs1 from zone SL-PRIVATE
-set security nat source rule-set rs1 to zone SL-PUBLIC 
-
-
-Luego de esto creamos la regla r1 la cual permite filtrar la información proveniente de la IP privada hacia la IP publica y la expone en una interfaz
-
-```
-set security nat source rule-set rs1 rule r1 match source-address 10.177.187.218/32
-set security nat source rule-set rs1 rule r1 match destination-address 0.0.0.0/0 
-set security nat source rule-set rs1 rule r1 then source-nat interface 
-
-Finalmente se definen las políticas de trafico entre zonas con los siguientes comandos 
-```
-set security policies from-zone SL-PRIVATE to-zone SL-PUBLIC policy internet-access match source-address any 
-set security policies from-zone SL-PRIVATE to-zone SL-PUBLIC policy internet-access match destination-address any 
-set security policies from-zone SL-PRIVATE to-zone SL-PUBLIC policy internet-access match application any 
-set security policies from-zone SL-PRIVATE to-zone SL-PUBLIC policy internet-access then permit
-```
-
 ## Referencias :mag:
-* <a href="https://github.com/emeloibmco/VPC-Conexion-VPN"> VPC Conexión VPN</a>. 
-* <a href="https://github.com/emeloibmco/PowerVS-Conectividad"> PowerVS-Conectividad</a>. 
 * <a href="https://www.juniper.net/documentation/us/en/software/junos/nat/topics/topic-map/nat-security-source-and-source-pool.html"> Network Address Translation User Guide</a>. 
 
 
 ## Autores :black_nib:
-Equipo IBM Cloud Tech Sales Colombia.
+Italo Silva Publi Cloud Perú.
